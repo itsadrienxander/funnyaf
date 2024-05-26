@@ -1,0 +1,89 @@
+#!/bin/bash
+
+# Function to display a menu
+display_menu() {
+    echo "String Handling Menu"
+    echo "1. Concatenate Strings"
+    echo "2. String Length"
+    echo "3. Extract Substring"
+    echo "4. Convert to Uppercase"
+    echo "5. Convert to Lowercase"
+    echo "6. Replace Substring"
+    echo "7. Exit"
+}
+
+# Function to concatenate two strings
+concatenate_strings() {
+    echo "Enter the first string:"
+    read string1
+    echo "Enter the second string:"
+    read string2
+    concatenated="$string1$string2"
+    echo "Concatenated String: $concatenated"
+}
+
+# Function to calculate the length of a string
+calculate_string_length() {
+    echo "Enter the string:"
+    read string
+    length=${#string}
+    echo "Length of the String: $length"
+}
+
+# Function to extract a substring
+extract_substring() {
+    echo "Enter the string:"
+    read string
+    echo "Enter the starting index:"
+    read start
+    echo "Enter the length:"
+    read length
+    substring="${string:start:length}"
+    echo "Substring: $substring"
+}
+
+# Function to convert string to uppercase
+convert_to_uppercase() {
+    echo "Enter the string:"
+    read string
+    uppercase=$(echo "$string" | tr '[:lower:]' '[:upper:]')
+    echo "Uppercase String: $uppercase"
+}
+
+# Function to convert string to lowercase
+convert_to_lowercase() {
+    echo "Enter the string:"
+    read string
+    lowercase=$(echo "$string" | tr '[:upper:]' '[:lower:]')
+    echo "Lowercase String: $lowercase"
+}
+
+# Function to replace a substring
+replace_substring() {
+    echo "Enter the string:"
+    read string
+    echo "Enter the substring to replace:"
+    read old_substring
+    echo "Enter the new substring:"
+    read new_substring
+    replaced="${string//$old_substring/$new_substring}"
+    echo "Modified String: $replaced"
+}
+
+# Main script
+while true; do
+    display_menu
+    echo "Enter your choice:"
+    read choice
+
+    case $choice in
+        1) concatenate_strings ;;
+        2) calculate_string_length ;;
+        3) extract_substring ;;
+        4) convert_to_uppercase ;;
+        5) convert_to_lowercase ;;
+        6) replace_substring ;;
+        7) echo "Exiting..."; break ;;
+        *) echo "Invalid choice. Please enter a number from 1 to 7." ;;
+    esac
+done
